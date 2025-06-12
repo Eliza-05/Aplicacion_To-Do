@@ -69,7 +69,13 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+	
+   <dependency>
+     <groupId>com.github.xujiaji.mk</groupId>
+     <artifactId>security-front</artifactId>
+     <version>1.0.0-beta7</version>
+   </dependency>
+ </dependencies>
 
 	<build>
 		<plugins>
