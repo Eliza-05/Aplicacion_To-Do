@@ -39,7 +39,7 @@ public class Task {
     }
 
     public void addLabel(String label) {
-        Label labelObj = new Label(label, label);
+        Label labelObj = new Label(label);
         this.labels.add(labelObj);
 
     }
