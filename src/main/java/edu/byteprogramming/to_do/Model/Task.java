@@ -78,10 +78,20 @@ public class Task {
         // Lógica para agregar un registro de la tarea
     }
 
+
     public void addNotification() {
         // Lógica para agregar una notificación para la tarea
     }
 
+
+    /**
+     *
+     * @param othertask
+     * @return
+     */
+    public boolean hasHigherPriorityThan(Task othertask) {
+        return this.priority.isHigherThan(othertask.priority);
+    }
 
 
 }
