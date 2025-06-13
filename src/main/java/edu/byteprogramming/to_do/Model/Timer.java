@@ -42,6 +42,5 @@ public class Timer {
         isWorkSession = !isWorkSession;
         start(); // reinicia el temporizador con la nueva sesión
     }
-
 }
 
