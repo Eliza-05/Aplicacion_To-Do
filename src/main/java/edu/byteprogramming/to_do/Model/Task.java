@@ -1,10 +1,12 @@
 package edu.byteprogramming.to_do.Model;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Task {
-    private String id;
+    private UUID id;
     private String title;
     private String description;
     private LocalDate dueDate;
@@ -12,11 +14,13 @@ public class Task {
     private Priority priority;
     //private Category category;
     private LocalDate crationDate;
+    private LocalDateTime createdAt;
     private Timer timer;
     private List<SubTask> subTasks;
-    private List<Label> labels;
+    private UUID userId;
+    //private List<Label> labels;
 
-    public Task(String id, String title, String description, LocalDate dueDate, boolean completed, Priority priority, Category category, LocalDate creationDate, Timer timer) {
+    public Task(UUID id, String title, String description, LocalDate dueDate, boolean completed, Priority priority, LocalDate creationDate, Timer timer, UUID userID) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -24,11 +28,37 @@ public class Task {
         this.completed = completed;
         this.priority = priority;
         //this.category = category;
-        this.crationDate = creationDate;
+        this.createdAt = LocalDateTime.now();
         this.timer = timer;
         this.subTasks = new ArrayList<>();
+        this.userId = userID;
         //this.labels = new ArrayList<>();
     }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public UUID getUserId() {
+        return userId;
+    }
+
+    public void setUserId(UUID userId) {
+        this.userId = userId;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
 
     public void setCompleted() {
         this.completed = true;
