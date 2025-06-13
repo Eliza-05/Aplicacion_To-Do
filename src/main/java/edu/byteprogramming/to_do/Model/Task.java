@@ -10,7 +10,7 @@ public class Task {
     private LocalDate dueDate;
     private boolean completed;
     private Priority priority;
-    private Category category;
+    //private Category category;
     private LocalDate crationDate;
     private Timer timer;
     private List<SubTask> subTasks;
@@ -23,11 +23,11 @@ public class Task {
         this.dueDate = dueDate;
         this.completed = completed;
         this.priority = priority;
-        this.category = category;
+        //this.category = category;
         this.crationDate = creationDate;
         this.timer = timer;
         this.subTasks = new ArrayList<>();
-        this.labels = new ArrayList<>();
+        //this.labels = new ArrayList<>();
     }
 
     public void setCompleted() {
@@ -39,8 +39,8 @@ public class Task {
     }
 
     public void addLabel(String label) {
-        Label labelObj = new Label(label);
-        this.labels.add(labelObj);
+        //Label labelObj = new Label(label);
+        //this.labels.add(labelObj);
 
     }
 
