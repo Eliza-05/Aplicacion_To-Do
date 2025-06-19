@@ -18,7 +18,6 @@ public class Task {
     private String title;
     private String description;
     private LocalDate dueDate;
-    private boolean completed;
 
     @Enumerated(EnumType.STRING)
     private Priority priority;
@@ -60,7 +59,6 @@ public class Task {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
-        this.completed = false;
         this.priority = priority;
         //this.category = category;
         this.status = status;
@@ -102,24 +100,6 @@ public class Task {
         this.dueDate = dueDate; 
         this.updatedAt = LocalDateTime.now();
     }
-
-    public boolean isCompleted() {
-        return completed; 
-    }
-    public void setCompleted(boolean completed) { 
-        this.completed = completed; 
-        if (completed) {
-            this.completedAt = LocalDateTime.now();
-            this.status = TaskStatus.COMPLETED;
-        } else {
-            this.completedAt = null;
-            // poner en progreso
-            if (this.status == TaskStatus.COMPLETED) {
-                this.status = TaskStatus.IN_PROGRESS;
-            }
-        }
-        this.updatedAt = LocalDateTime.now();
-    }
     
     public Priority getPriority() {
         return priority; 
@@ -132,18 +112,20 @@ public class Task {
     public TaskStatus getStatus() { 
         return status; 
     }
+
     public void setStatus(TaskStatus status) { 
-        this.status = status;
-        if (status == TaskStatus.COMPLETED) {
-            this.completed = true;
-            this.completedAt = LocalDateTime.now();
-        } else if (this.completed) {
-            this.completed = false;
-            this.completedAt = null;
-        }
-        this.updatedAt = LocalDateTime.now();
+    this.status = status;
+    
+    if (status == TaskStatus.COMPLETED) {
+        this.completedAt = LocalDateTime.now();
+    } 
+    else if (this.completedAt != null) {
+        this.completedAt = null;
+    }
+    this.updatedAt = LocalDateTime.now();
     }
     
+
     public ToDoList getTodoList() { 
         return todoList; 
     }
@@ -183,6 +165,12 @@ public class Task {
     }
 
 
+
+    public boolean isCompleted() {
+    return this.status == TaskStatus.COMPLETED;
+    }
+
+    
     // Métodos para gestionar subtareas
     public void addSubTask(SubTask subTask) {
         subTasks.add(subTask);
@@ -196,44 +184,23 @@ public class Task {
         this.updatedAt = LocalDateTime.now();
     }
 
-    // Método para verificar si la tarea está vencida
     public boolean isOverdue() {
-        if (this.completed) return false;
-        return LocalDate.now().isAfter(this.dueDate);
-    }
-    
-    // Método para calcular el progreso basado en subtareas
-    public int getCompletionPercentage() {
-    if (subTasks.isEmpty()) {
-        return completed ? 100 : 0;
-    }
+    if (this.status == TaskStatus.COMPLETED) return false;
+    return LocalDate.now().isAfter(this.dueDate);
+}
 
+// Método para calcular el progreso basado en subtareas
+public int getCompletionPercentage() {
+    if (subTasks.isEmpty()) {
+        return (this.status == TaskStatus.COMPLETED) ? 100 : 0;
+    }
     int completedCount = 0;
     for (SubTask subTask : subTasks) {
         if (subTask.isCompleted()) {
             completedCount++;
         }
     }
-
     return (completedCount * 100) / subTasks.size();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
 
 }
