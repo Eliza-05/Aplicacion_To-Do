@@ -143,7 +143,7 @@ public class ToDoList {
         return (completedCount * 100) / tasks.size();
     }
     
-    public List<Task> getTasksByPriority(Priority priority) {
+    /**public List<Task> getTasksByPriority(Priority priority) {
         List<Task> filteredTasks = new ArrayList<>();
         for (Task task : tasks) {
             if (task.getPriority() == priority) {
@@ -151,7 +151,7 @@ public class ToDoList {
             }
         }
         return filteredTasks;
-    }
+    }*/
 
     public List<Task> getOverdueTasks() {
         List<Task> overdueTasks = new ArrayList<>();

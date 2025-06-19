@@ -120,14 +120,14 @@ public class Task {
         }
         this.updatedAt = LocalDateTime.now();
     }
-    
-    public Priority getPriority() {
-        return priority; 
+
+    /**public Priority getPriority() {
+        return priority;
     }
-    public void setPriority(Priority priority) { 
-        this.priority = priority; 
-        this.updatedAt = LocalDateTime.now();
-    }
+    //public void setPriority(Priority priority) {
+      //  this.priority = priority;
+        //this.updatedAt = LocalDateTime.now();
+    */
 
     public TaskStatus getStatus() { 
         return status; 
@@ -182,6 +182,8 @@ public class Task {
         return completedAt; 
     }
 
+    public Priority getPriorityLevel() { return priority; }
+
 
     // Métodos para gestionar subtareas
     public void addSubTask(SubTask subTask) {
@@ -216,6 +218,8 @@ public class Task {
     }
 
     return (completedCount * 100) / subTasks.size();
+
+    
 }
 
 
