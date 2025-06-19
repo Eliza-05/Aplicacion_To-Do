@@ -181,7 +181,6 @@ public class ToDoList {
         if (completedTasks.isEmpty()) {
             return 0;
         }
-        
         long totalDays = 0;
         for (Task task : completedTasks) {
             if (task.getCompletedAt() != null && task.getCreatedAt() != null) {
@@ -189,7 +188,6 @@ public class ToDoList {
                     task.getCreatedAt(), task.getCompletedAt()).toDays();
             }
         }
-        
         return (double) totalDays / completedTasks.size();
     }
 
