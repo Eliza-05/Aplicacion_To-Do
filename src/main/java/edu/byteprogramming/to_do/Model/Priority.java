@@ -20,4 +20,14 @@ public enum Priority {
     public String getColor() {
         return color;
     }
+
+    public static Priority fromDisplayName(String displayName) {
+        for (Priority priority : values()) {
+            if (priority.getDisplayName().equalsIgnoreCase(displayName)) {
+                return priority;
+            }
+        }
+        throw new IllegalArgumentException("No se encontró la prioridad: " + displayName);
+    }
+
 }
